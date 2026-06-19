@@ -7,305 +7,407 @@
   <meta name="description" content="スマホで使える無料ブラウザアプリ集。介護・福祉向けツール、ゲーム、便利アプリを公開しています。">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f4f6f5;
       color: #222;
-      line-height: 1.7;
+      line-height: 1.65;
+      font-family: "MS PGothic", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      background-color: #fdf7d7;
+      background-image:
+        linear-gradient(45deg, rgba(255, 153, 204, .22) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(102, 204, 255, .20) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255, 153, 204, .22) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(102, 204, 255, .20) 75%);
+      background-size: 32px 32px;
+      background-position: 0 0, 0 16px, 16px -16px, -16px 0;
+    }
+
+    a { color: #0000ee; }
+    a:visited { color: #551a8b; }
+
+    .page {
+      width: min(960px, calc(100% - 18px));
+      margin: 12px auto 24px;
+      border: 4px double #ff66aa;
+      background: #fffef2;
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, .22);
     }
 
     header {
-      background: linear-gradient(135deg, #2f6f5e, #245449);
-      color: #fff;
-      padding: 34px 18px 30px;
       text-align: center;
+      padding: 18px 12px 12px;
+      background: linear-gradient(90deg, #ff99cc, #ffff99, #99ddff);
+      border-bottom: 3px ridge #999;
+    }
+
+    .mini-nav {
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: #333;
     }
 
     header h1 {
+      display: inline-block;
       margin: 0;
-      font-size: 28px;
-      letter-spacing: 0.03em;
+      padding: 8px 16px;
+      font-size: clamp(26px, 6vw, 42px);
+      color: #ff0088;
+      background: #fff;
+      border: 3px outset #ffcc00;
+      text-shadow: 2px 2px 0 #ffff66, 4px 4px 0 #99ddff;
+      letter-spacing: .04em;
     }
 
     header p {
-      margin: 12px auto 0;
       max-width: 720px;
+      margin: 12px auto 0;
       font-size: 15px;
-      opacity: 0.95;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .marquee-box {
+      padding: 6px 8px;
+      background: #000080;
+      color: #fff;
+      border-top: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      font-size: 14px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-text {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 18s linear infinite;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-100%); }
     }
 
     main {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 22px 16px 36px;
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 14px;
+      padding: 14px;
     }
 
-    .notice {
+    .sidebar,
+    .content-box {
+      border: 3px ridge #9a9a9a;
       background: #ffffff;
-      border-left: 6px solid #2f6f5e;
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin: 0 0 24px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    }
+
+    .sidebar {
+      padding: 10px;
+      align-self: start;
+      position: sticky;
+      top: 8px;
+    }
+
+    .side-title {
+      margin: 0 0 8px;
+      padding: 5px;
+      text-align: center;
+      background: #ffcc00;
+      border: 2px outset #fff;
+      color: #cc0066;
+      font-weight: bold;
+    }
+
+    .counter {
+      margin: 10px 0;
+      padding: 8px;
+      text-align: center;
+      background: #000;
+      color: #00ff66;
+      border: 2px inset #777;
+      font-family: "Courier New", monospace;
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+
+    .menu a {
+      display: block;
+      margin: 6px 0;
+      padding: 6px;
+      background: #e8f3ff;
+      border: 2px outset #cfcfcf;
+      text-decoration: none;
+      font-weight: bold;
       font-size: 14px;
     }
 
+    .menu a:active { border-style: inset; }
+
+    .small-note {
+      margin: 10px 0 0;
+      font-size: 12px;
+      color: #555;
+    }
+
+    .content-box {
+      padding: 12px;
+    }
+
+    .notice {
+      margin: 0 0 14px;
+      padding: 10px;
+      background: #ffffcc;
+      border: 2px dashed #ff9900;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .ad-box {
+      margin: 14px 0;
+      padding: 8px;
+      text-align: center;
+      background: #eeeeee;
+      border: 2px dotted #777;
+    }
+
     .section-title {
-      font-size: 22px;
-      margin: 30px 0 14px;
-      padding-left: 12px;
-      border-left: 7px solid #2f6f5e;
+      margin: 22px 0 10px;
+      padding: 7px 10px;
+      color: #fff;
+      background: #008080;
+      border: 3px outset #88cccc;
+      font-size: 20px;
     }
 
     .app-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
     }
 
     .app-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-      border: 1px solid rgba(0,0,0,0.04);
+      padding: 12px;
+      background: #f8fbff;
+      border: 3px ridge #c0c0c0;
     }
 
     .app-card h3 {
       margin: 0 0 8px;
-      font-size: 19px;
-      line-height: 1.4;
+      padding-bottom: 4px;
+      color: #cc0066;
+      border-bottom: 1px dashed #999;
+      font-size: 18px;
     }
 
     .app-card p {
-      margin: 0 0 15px;
+      margin: 0 0 12px;
       font-size: 14px;
-      color: #444;
-    }
-
-    .app-card a {
-      display: inline-block;
-      background: #2f6f5e;
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 17px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .app-card a:active {
-      transform: scale(0.98);
+      color: #333;
     }
 
     .tag {
       display: inline-block;
-      margin-bottom: 10px;
-      padding: 3px 9px;
-      border-radius: 999px;
-      background: #e8f1ee;
-      color: #245449;
+      margin-bottom: 7px;
+      padding: 2px 7px;
+      color: #fff;
+      background: #ff6600;
+      border: 1px solid #993300;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: bold;
     }
+
+    .app-card a,
+    .line-card a {
+      display: inline-block;
+      padding: 8px 14px;
+      background: linear-gradient(#ffffff, #d9d9d9);
+      color: #0000ee;
+      border: 3px outset #d0d0d0;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .app-card a:active,
+    .line-card a:active { border-style: inset; }
+
+    .line-card {
+      margin: 24px auto 8px;
+      max-width: 680px;
+      padding: 16px;
+      text-align: center;
+      color: #063;
+      background: #ccffcc;
+      border: 4px double #06c755;
+    }
+
+    .line-card h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      color: #008844;
+      text-shadow: 1px 1px 0 #fff;
+    }
+
+    .line-card p { margin: 0 0 14px; }
 
     footer {
+      padding: 16px 10px 20px;
       text-align: center;
-      color: #777;
       font-size: 13px;
-      padding: 30px 12px 36px;
+      color: #333;
+      background: #e6e6e6;
+      border-top: 3px ridge #999;
     }
 
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 24px;
+    .blink {
+      animation: blink 1.2s steps(2, start) infinite;
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    @media (max-width: 720px) {
+      .page {
+        width: calc(100% - 10px);
+        margin-top: 6px;
+        box-shadow: 4px 4px 0 rgba(0,0,0,.2);
       }
 
       main {
-        padding: 18px 12px 30px;
+        grid-template-columns: 1fr;
+        padding: 9px;
       }
 
-      .section-title {
-        font-size: 20px;
+      .sidebar {
+        position: static;
       }
 
-      .app-card {
-        padding: 16px;
+      .menu {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
       }
+
+      .menu a { margin: 0; text-align: center; }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>ナカイヤブラウザアプリ集</h1>
-    <p>スマホで使える無料ブラウザアプリを公開しています。介護・福祉向けツール、ゲーム、便利アプリをまとめています。</p>
-  </header>
+  <div class="page">
+    <header>
+      <div class="mini-nav">★ Since 2026 / Japanese personal homepage style ★</div>
+      <h1>ナカイヤブラウザアプリ集</h1>
+      <p>スマホで使える無料ブラウザアプリを公開しています。介護・福祉向けツール、ゲーム、便利アプリをまとめています。</p>
+    </header>
 
-  <main>
-    <div class="notice">
-      このページは、公開中のブラウザアプリへの入口です。各アプリはスマホのブラウザからそのまま使えます。
+    <div class="marquee-box">
+      <span class="marquee-text">★ ようこそ！ここはナカイヤのブラウザアプリ置き場です ★ スマホからそのまま遊べます・使えます ★</span>
     </div>
-<!-- admax -->
-<script src="https://adm.shinobi.jp/s/32ce05a58861beeabe7d26633674d636"></script>
-<!-- admax -->
+
+    <main>
+      <aside class="sidebar">
+        <div class="side-title">MENU</div>
+        <div class="counter">0001313</div>
+        <nav class="menu">
+          <a href="#care">介護・福祉</a>
+          <a href="#game">ゲーム</a>
+          <a href="#tool">実用アプリ</a>
+          <a href="#line">LINEスタンプ</a>
+        </nav>
+        <p class="small-note">※このページは昔の個人サイト風に作っています。</p>
+      </aside>
+
+      <section class="content-box">
+        <div class="notice">
+          <span class="blink">NEW!</span> このページは、公開中のブラウザアプリへの入口です。各アプリはスマホのブラウザからそのまま使えます。
+        </div>
+
+        <div class="ad-box">
+          <!-- admax -->
+          <script src="https://adm.shinobi.jp/s/32ce05a58861beeabe7d26633674d636"></script>
+          <!-- admax -->
+        </div>
+
+        <h2 id="care" class="section-title">◆ 介護・福祉向けアプリ ◆</h2>
+        <div class="app-grid">
+          <div class="app-card">
+            <span class="tag">介護記録</span>
+            <h3>ボディチェック記録アプリ</h3>
+            <p>前面・背面・左右側面の人体図に、傷・内出血・褥瘡などの位置を記録できるアプリです。記録画像として保存できます。</p>
+            <a href="https://nakaiya1313.github.io/cuddly-engine/">アプリを開く</a>
+          </div>
+
+          <div class="app-card">
+            <span class="tag">介護補助</span>
+            <h3>電話シミュレーター</h3>
+            <p>介護現場などで、電話をかけたふりをするためのシンプルなシミュレーターです。場面に応じて素早く使えます。</p>
+            <a href="https://nakaiya1313.github.io/bug-free-computing-machine/">アプリを開く</a>
+          </div>
+
+          <div class="app-card">
+            <span class="tag">介護補助</span>
+            <h3>ケアでんたく</h3>
+            <p>介護現場で使えそうな計算の詰め合わせ。BMI・生まれ年・干支・単位変換等々。</p>
+            <a href="https://nakaiya1313.github.io/riyousyazyouhou/">アプリを開く</a>
+          </div>
+
+          <div class="app-card">
+            <span class="tag">介護・福祉</span>
+            <h3>大きな筆談ボード</h3>
+            <p>入力した文字を大きく表示、読み上げ機能付き。耳の聞こえにくい方との筆談アプリ。</p>
+            <a href="https://nakaiya1313.github.io/crispy-octo-train/">アプリを開く</a>
+          </div>
+        </div>
+
+        <h2 id="game" class="section-title">◆ ゲームアプリ ◆</h2>
+        <div class="app-grid">
+          <div class="app-card">
+            <span class="tag">ゲーム</span>
+            <h3>メダカの針子ゲーム</h3>
+            <p>小さな針子を操作して、大人メダカから逃げるスマホ向けミニゲームです。すき間時間に遊べます。</p>
+            <a href="https://nakaiya1313.github.io/friendly-octo-journey/">ゲームを開く</a>
+          </div>
+
+          <div class="app-card">
+            <span class="tag">ゲーム</span>
+            <h3>キャラ撃ち出しギャラリー</h3>
+            <p>キャラクターを狙い撃ちするミニゲームです。エンドレス、タイムアタック、ディフェンスなどのモードがあります。</p>
+            <a href="https://nakaiya1313.github.io/solid-waffle/">ゲームを開く</a>
+          </div>
+        </div>
+
+        <h2 id="tool" class="section-title">◆ 実用アプリ ◆</h2>
+        <div class="app-grid">
+          <div class="app-card">
+            <span class="tag">決定・選択</span>
+            <h3>なんでも決めるアプリ</h3>
+            <p>「何で決める？」を1つにしたアプリ。ルーレット・あみだ・グループ分け・サイコロ等々詰め合わせ。</p>
+            <a href="https://nakaiya1313.github.io/upgraded-garbanzo/">アプリを開く</a>
+          </div>
+        </div>
+
+        <div id="line" class="line-card">
+          <h2>LINEスタンプも作っています</h2>
+          <p>良かったら見ていって下さい😊</p>
+          <a href="https://line.me/S/shop/sticker/author/5626217/" target="_blank" rel="noopener noreferrer">LINEスタンプを見る →</a>
+        </div>
+
+        <div class="ad-box">
+          <!-- admax -->
+          <script src="https://adm.shinobi.jp/s/a50486d534380a54546cec8575d673bd"></script>
+          <!-- admax -->
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      管理人：ナカイヤ / © ナカイヤブラウザアプリ集<br>
+      Last Update: 2026.06.19
+    </footer>
   </div>
-    <h2 class="section-title">介護・福祉向けアプリ</h2>
-
-    <div class="app-grid">
-      <div class="app-card">
-        <span class="tag">介護記録</span>
-        <h3>ボディチェック記録アプリ</h3>
-        <p>
-          前面・背面・左右側面の人体図に、傷・内出血・褥瘡などの位置を記録できるアプリです。
-          記録画像として保存できます。
-        </p>
-        <a href="https://nakaiya1313.github.io/cuddly-engine/">アプリを開く</a>
-      </div>
-
-      <div class="app-card">
-        <span class="tag">介護補助</span>
-        <h3>電話シミュレーター</h3>
-        <p>
-          介護現場などで、電話をかけたふりをするためのシンプルなシミュレーターです。
-          場面に応じて素早く使えます。
-        </p>
-        <a href="https://nakaiya1313.github.io/bug-free-computing-machine/">アプリを開く</a>
-      </div>
-
-        <div class="app-card">
-        <span class="tag">介護補助</span>
-        <h3>ケアでんたく</h3>
-        <p>
-          介護現場で使えそうな計算の詰め合わせ。
-          BMI・生まれ年・干支・単位変換等々。
-        </p>
-        <a href="https://nakaiya1313.github.io/riyousyazyouhou/">アプリを開く</a>
-      </div>
-      <div class="app-card">
-        <span class="tag">介護・福祉</span>
-        <h3>大きな筆談ボード</h3>
-        <p>
-          入力した文字を大きく表示、読み上げ機能付き。
-          耳の聞こえにくい方との筆談アプリ。
-        </p>
-        <a href="https://nakaiya1313.github.io/crispy-octo-train/">アプリを開く</a>
-      </div>
-    </div>
-
-    <h2 class="section-title">ゲームアプリ</h2>
-
-    <div class="app-grid">
-      <div class="app-card">
-        <span class="tag">ゲーム</span>
-        <h3>メダカの針子ゲーム</h3>
-        <p>
-          小さな針子を操作して、大人メダカから逃げるスマホ向けミニゲームです。
-          すき間時間に遊べます。
-        </p>
-        <a href="https://nakaiya1313.github.io/friendly-octo-journey/">ゲームを開く</a>
-      </div>
-
-      <div class="app-card">
-        <span class="tag">ゲーム</span>
-        <h3>キャラ撃ち出しギャラリー</h3>
-        <p>
-          キャラクターを狙い撃ちするミニゲームです。
-          エンドレス、タイムアタック、ディフェンスなどのモードがあります。
-        </p>
-        <a href="https://nakaiya1313.github.io/solid-waffle/">ゲームを開く</a>
-      </div>
-    </div>
-
-    
-    <h2 class="section-title">実用アプリ</h2>
-
-      <div class="app-card">
-        <span class="tag">決定・選択</span>
-        <h3>なんでも決めるアプリ</h3>
-        <p>
-          「何で決める？」を1つにしたアプリ。
-          ルーレット・あみだ・グループ分け・サイコロ等々詰め合わせ。
-        </p>
-        <a href="https://nakaiya1313.github.io/upgraded-garbanzo/">アプリを開く</a>
-      </div>
-
-    <!-- LINEスタンプ紹介 -->
-
-<div style="
-  margin:40px auto;
-  max-width:700px;
-  background:#06C755;
-  border-radius:20px;
-  padding:24px;
-  text-align:center;
-  box-shadow:0 6px 16px rgba(0,0,0,0.15);
-">
-
-  <h2 style="
-    margin:0 0 12px;
-    color:white;
-    font-size:24px;
-  ">
-    LINEスタンプも作っています
-  </h2>
-
-  <p style="
-    color:white;
-    font-size:16px;
-    margin-bottom:20px;
-  ">
-    良かったら見ていって下さい😊
-  </p>
-
-<a
-href="https://line.me/S/shop/sticker/author/5626217/
-target="_blank"
-rel="noopener noreferrer"
-style="
-display:inline-block;
-background:white;
-color:#06C755;
-text-decoration:none;
-font-weight:bold;
-padding:14px 26px;
-border-radius:999px;
-font-size:18px;
-"
-
->
-
-```
-LINEスタンプを見る →
-```
-
-  </a>
-
-</div>
-
-    </div>
-  <div style="text-align:center;margin:40px 0 20px;">
-    <!-- admax -->
-    <script src="https://adm.shinobi.jp/s/a50486d534380a54546cec8575d673bd"></script>
-    <!-- admax -->
-  </div>
-
-
-  <div style="text-align:center;margin:40px 0 20px;">
-    <!-- admax -->
-    <script src="https://adm.shinobi.jp/s/a50486d534380a54546cec8575d673bd"></script>
-    <!-- admax -->
-  </div>
-    
-  </main>
-
-  <footer>
-    © ナカイヤブラウザアプリ集
-  </footer>
 </body>
 </html>
